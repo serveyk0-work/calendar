@@ -57,13 +57,9 @@ export const Calendar = (props) => {
     for (let i = 1; i <= countDays; i++)
       data.push(<span key={i} className={"day grid grid-align-center text-center " + (currentDate.showDate === i ? "active_date" : "")} onClick={() => { change_Show(i, start_day - 1 + i); popup() }}>{i}</span>);
 
-      console.log(start_day + " = start_day")
-      console.log((countDays + start_day) + " = countDays + start_day" )
     const check = (countDays + start_day) % 7;
-    console.log(check + "\n\n")
     if (check !== 0) {
       for (let d = 1, i = check; i !== 0; i = ++i % 7, d++) {
-        console.log(i + " : " + d)
         data.push(<span key={countDays * (-d)} className="day grid grid-align-center text-center other_dates">{d}</span>);
       }
     }
