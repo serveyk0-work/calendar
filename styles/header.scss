@@ -1,0 +1,81 @@
+@import './colors.scss';
+@import './mixins/font-size';
+
+$min_width_href: 320px;  
+$max_width_href: 1920px; 
+$min_font_href: 18px;
+$max_font_href: 28px;
+
+.header {
+    color: $header_text_color;
+    background-color: $header_bg;
+    z-index: 3;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr min-content;
+        padding: 1.9em 110px;
+    }
+    padding-bottom: 20px;
+    .header__logo {
+        grid-template-columns: repeat(2, max-content);
+        font-weight: bold;
+        margin: 0 auto;
+        @media screen and (min-width: 768px) {
+            margin: 0;
+        }
+        .logo-square {
+            height: fit-content;
+            background-color: $square;
+            width: fit-content;
+            padding: 0px 0.2em;
+            span {
+                font-size: 27px;
+                line-height: 0.8em;
+                &:first-child {
+                    transform: scale(1, .8);
+                }
+            }
+        }
+        .header__logo-title {
+            padding-top: 0.15em;
+            span{
+                &:first-child {
+                    font-size: 60px;
+                }
+                &:nth-child(2) {
+                    font-size: 40px
+                }
+            }
+        }
+    }
+
+    .header__links {
+        grid-column-gap: 4.5em;
+        grid-template-columns: repeat(2, max-content);
+        @media screen and (min-width: 768px) {
+            padding-top: 1.2em;
+        }
+        a {
+            color: $header_text_color;
+            font-size: 28px;
+            @include fluid-type($min_width_href, $max_width_href, $min_font_href, $max_font_href);
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    }
+}
+
+.active {
+    position: relative;
+    &::after{
+        content: "";
+        background-color: $active_href;
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -25%);
+        border-radius: 10px;
+    }
+}

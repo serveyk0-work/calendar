@@ -1,0 +1,9 @@
+$imagePath : "../../assets/images";
+
+@mixin background-image($img, $background-position, $background-color, $size) {
+    background-image: url('#{$imagePath}/#{$img}');
+    background-repeat: no-repeat;
+    background-position: $background-position;
+    background-color: $background-color;
+    background-size: $size;
+}

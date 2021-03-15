@@ -1,0 +1,33 @@
+@import './colors.scss';
+@import './mixins/font-size';
+
+$min_width_href: 320px;
+$max_width_href: 1920px;
+
+.about {
+    max-width: 1325px;
+    margin: 30px auto 30px auto;
+    width: 90%;
+    @media screen and (min-width: 768px) {
+        margin: 90px auto 90px auto !important;
+    }
+    .about__title {
+        @include fluid-type($min_width_href, $max_width_href, 16px, 33.5px);
+        color: $about_text_color;
+        letter-spacing: -0.68px;
+        padding-bottom: 20px;
+        text-align: center;
+        @media screen and (min-width: 768px) {
+            padding-bottom: 50px;
+            text-align: start !important;
+        }
+    }
+    .about__text {
+        color: $about_text_color;
+        letter-spacing: 0.3px;
+        line-height: 1.9;
+        @include fluid-type($min_width_href, $max_width_href, 16px, 20px);
+        padding: .75em 0em;
+        font-weight: 100;
+    }
+}

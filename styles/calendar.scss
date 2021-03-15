@@ -1,0 +1,122 @@
+@import './colors.scss';
+@import './mixins/font-size';
+
+$min_width_href: 320px;
+$max_width_href: 1920px;
+
+.calendar {
+    background-color: $calendar_bg;
+    grid-template-rows: min-content max-content min-content;
+
+    z-index: 3;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 30px;
+        padding: 20px 0px;
+    }
+
+    .calendar__header {
+        padding: 1vmin;
+        border-bottom: 1px solid $border_color;
+        grid-template-columns: min-content 1fr min-content;
+        color: $header_date_color;
+        text-transform: uppercase;
+        @include fluid-type($min_width_href, $max_width_href, 14px, 19px);
+        padding-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .calendar__body {
+        padding: 15px 0px;
+        padding: 1vmin;
+
+        .days {
+            grid-template-columns: repeat(7, min-content);
+            grid-gap: 20px;
+
+            .day {
+                color: $main_date_color;
+                width: 6vmin;
+                height: 6vmin;
+                @include fluid-type($min_width_href, $max_width_href, 13px, 17px);
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .other_dates {
+                color: $other_date_color !important;
+            }
+        }
+    }
+
+    .calendar__footer {
+        padding: 1vmin;
+        border-top: 1px solid $border_color;
+        border-bottom: 1px solid $border_color;
+        color: $days_name_color;
+        padding: 1vmin 0px 1vmin 0px;
+        grid-gap: 20px;
+        grid-template-columns: repeat(7, min-content);
+
+        span {
+            width: 6vmin;
+            height: 6vmin;
+            font-size: 20px;
+            @include fluid-type($min_width_href, $max_width_href, 15px, 20px);
+            text-transform: uppercase;
+        }
+    }
+}
+
+.active_date {
+    background-color: $active_date_bg !important;
+    color: $active_date_color !important;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    z-index: 999;
+    
+    
+    .popup_wrapper {
+        max-width: 700px;
+        height: fit-content;
+        width: calc(100% - 20px);
+        position: relative;
+        padding: 40px;
+        background-color: #ffffff;
+        .popup__data {
+            grid-gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            .data-block {
+                .popup__data-title {
+                    color: $popup_title;
+                    font-weight: 500;
+                }
+                .popup__data-block {
+                    color: $poput_text;
+                    padding: 10px;
+                    font-weight: 500;
+                    border: 2px solid $form_border_color;
+                }
+            }
+        }
+
+        .close {
+            position: absolute;
+            color: $poput_text;
+            font-size: 30px;
+            right: 20px;
+            top: 0;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

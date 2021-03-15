@@ -1,0 +1,1 @@
+export const FOOTER = ["s", "m", "t", "w", "t", "f", "s"];
