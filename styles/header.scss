@@ -46,6 +46,9 @@ $max_font_href: 28px;
                 }
             }
         }
+        &:hover {
+            cursor: default;
+        }
     }
 
     .header__links {
